@@ -14,6 +14,16 @@ ENV HOME=/${WORKDIR} \
 
 WORKDIR ${HOME}
 
+# コンテナパッケージをインストール
+COPY package*.json ./
+RUN yarn install
+
+# コンテナにNuxtプロジェクトをコピー
+COPY . ./
+
+# 本番環境用にアプリを構築
+RUN yarn run build
+
 # 公開用ポート番号を指定
 # http://localhost(0.0.0.0):3000
 # EXPOSE ${CONTAINER_PORT}
