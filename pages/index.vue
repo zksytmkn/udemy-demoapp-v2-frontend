@@ -29,7 +29,6 @@ export default {
   async asyncData({ $axios }) {
     let users = [];
     await $axios.$get("/api/v1/users").then((res) => (users = res));
-      .then(res => (users = res))
     return { users };
   },
   computed: {
