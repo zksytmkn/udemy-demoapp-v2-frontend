@@ -26,16 +26,12 @@
 
 <script>
 export default {
-  // asyncData => コンポーネントのデータを表示する前に実行されるメソッド
-  // async => promiseを返す(非同期処理の結果を表示するオブジェクトのこと)
-  // await => promiseを返す迄JavaScriptを待機させる
   async asyncData({ $axios }) {
     let users = [];
     await $axios.$get("/api/v1/users").then((res) => (users = res));
       .then(res => (users = res))
     return { users };
   },
-  // 算出プロパティ => 計算したデータを返す関数のこと
   computed: {
     dateFormat() {
       return (date) => {
